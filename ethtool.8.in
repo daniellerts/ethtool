@@ -522,6 +522,12 @@ ethtool \- query or control network driver and hardware settings
 .BR on | off ]
 .RB [ tx\-min\-frag\-size
 .BR N ]
+.B ethtool \-\-flash\-module\-firmware
+.I devname
+.RB [ file
+.IR FILE ]
+.RB [ pass
+.IR PASS ]
 .
 .\" Adjust lines (i.e. full justification) and hyphenate.
 .ad
@@ -1702,6 +1708,25 @@ Enable or disable the verification state machine.
 .B verify-time \ N
 Set the interval in ms between verification attempts.
 
+.B \-\-flash\-module\-firmware
+Flash the transceiver module's firmware. The firmware update process is
+composed from three logical steps. Downloading a firmware image to the
+transceiver module, running the image and committing the image so that it is
+run upon reset. When \fBfile\fR argument is specified and set, the
+firmware update process is performed in its entirety.
+.RS 4
+.TP
+.BI file \ FILE
+Specifies the filename of the transceiver module firmware image. The firmware
+must first be installed in one of the directories where the kernel firmware
+loader or firmware agent will look, such as /lib/firmware. When specified, the
+firmware image is downloaded to the transceiver module and validated.
+.RE
+.RS 4
+.TP
+.BI pass \ PASS
+Optional transceiver module password that might be required as part of the
+transceiver module firmware update process.
 .RE
 .SH BUGS
 Not supported (in part or whole) on all network drivers.

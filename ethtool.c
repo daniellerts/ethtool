@@ -6121,6 +6121,13 @@ static const struct option args[] = {
 			  "		[ tx-min-frag-size 60-252 ]\n"
 	},
 	{
+		.opts	= "--flash-module-firmware",
+		.nlfunc	= nl_flash_module_fw,
+		.help	= "Flash transceiver module firmware",
+		.xhelp	= "		[ file FILE ]\n"
+			  "		[ pass PASS ]\n"
+	},
+	{
 		.opts	= "-h|--help",
 		.no_dev	= true,
 		.func	= show_usage,
